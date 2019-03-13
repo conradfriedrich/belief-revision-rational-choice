@@ -1,0 +1,77 @@
+\documentclass{article} \usepackage[utf8]{inputenc} \title{} \author{Conrad Friedrich
+\\ MCMP, LMU Munich \\ 500,000 words} \date{\today} \usepackage{setspace}
+
+\usepackage[backend=biber,authordate,
+ibidtracker=context,natbib,doi=false,isbn=false,url=false]{biblatex-chicago}
+\addbibresource{/home/gilbert/Documents/bibliography/references.bib}
+
+\begin{document}
+
+\maketitle
+\section{Introduction}
+This paper discusses Hans Rott' claim that principles of reasoning and belief
+are subsumed under and derivable from what may be called principles of practical
+reason and, in addition, Erik Olsson's reply. I argue that Olsson's criticism is in part
+successful, but Sven Ove Hansson makes an even stronger point. To this end, I
+first reconstruct a fragment of Rott's unifying framework and explain the
+logical and epistemological systems involved. Then I look in detail
+at Olsson's philosophical response. I conclude with a critical discussion.
+
+The first part of this paper focusses on select elements of the formal systems Hans Rott is unifying. I
+describe aspects belief revision theory, a study of rational changes of belief, thus a
+theory situated between formal epistemology and symbolic artificial
+intelligence. Next, I give an exposition of a certain type non-monotonic logic, a type of logic
+that allows for defeasible inferences, i.e. inferences which might be
+invalidated by further information. I then present results already preceding
+Rott's work, in which both systems just mentioned are shown to behave very similarly. 
+Next, I give a brief description of the theory of rational choice via choice functions,
+and finally describe how Rott shows both belief revision and non-monotonic logic
+to be derivable as choice functions.
+
+The second part of this paper accepts the formal systems as given and evaluates
+Rott's philosophical claim regarding the unity of practical and theoretical
+reason. To this end, I look at Erik Olsson's criticism and discuss his arguments
+in turn. I argue that Hansson's brief critique points to a deeper problem than
+Olsson addresses, though.  
+
+
+\section{Belief Revision, Non-monotonic Logic, and Rational Choice}
+Belief revision if the form of the most prominent AGM \parencite{alchourron85_logic_theor_chang} defines criteria for a rational agent on how to update her
+beliefs when learning evidence. Crucially, this evidence might be conflicting
+with what the agent already beliefs. For example, you are about to pay your bill
+at a restaurant and, to your great surprise, there is no money in your wallet
+\parencite[p.~48]{gaerdenfors88_knowl}.
+
+In this framework, the agent's epistemic state is modeled by a set of sentences
+from a standard propositional language \(\mathcal{L}\) closed under the boolean
+operations \(\land, \lor, \neg, \rightarrow\). A consistent set closed under a
+classical consequence relation \(\vdash\) is called \emph{belief set}. The three
+key operations on a belief set are expansion, contraction and revision, each
+with a single sentence. This sentence represents external input, e.g. the
+content of a testimony of a trusted interlocutor. Expansion is only employed in
+case the added belief is consistent with the belief set, such that it is a
+special case of revision. Contraction and revision are interdefinable via two
+postulates called Levi identity and Harper identity, defining contraction in
+terms of revision and \emph{vice versa}, respectively.
+
+Let us look then at the revision function from a sentence \(A\) and a belief set \(K\), denoted \(K^*A\). What constitutes a rational revision? Following Quine`s `maxim of minimum mutilation' \parencite[p.~72]{rott01_chang_choic_infer}, the central postulates for belief revision aim at conserving as much as possible from \(K\) in the new set \(K^*A\) while incorporating the new evidence \(A\).\textcite{gaerdenfors88_knowl} describes six basic, minimal or elementary postulates, and two additional ones. In the interest of brevity, I will skip listing them and refer to the numerous publications agreeing on these principles, e.g. \textcite[p.~57]{gaerdenfors88_knowl, brewka97_nonmon}, \textcite{hansson17_logic_belief_revis}. As an example, this postulates states the success of the revision:
+
+\begin{align}
+  \label{eq:k2}
+  \tag{(K^*2)} 
+  A \in K^*A
+\end{align}
+
+\begin{equation}
+  \nonumber
+  \label{eq:k2}
+  \tag{(K^*2)} 
+  A \in K^*A
+\end{equation}
+The postulates are designed are designed to be intuitive and confirm to common sense (Cite). Importantly, they constrain the set of rational revision functions by way of logical (set-theoretical) considerations, but do not necessarily determine a revision uniquely \parencite[p.~53]{gaerdenfors88_knowl}.  
+
+\section{Erik Olsson's Critique}
+\section{Discussion and Conclusion}
+\nocite{rott01_chang_choic_infer,olsson03_belief_revis_ration_choic_unity_reason,gaerdenfors88_knowl,gaerdenfors94_nonmon_infer_based_expec,alchourron85_logic_theor_chang,makinson91_relat,sen93_inter_consis_choic,kraus90_nonmon_reason_prefer_model_cumul_logic,hansson17_logic_belief_revis, ortner11_mechan_induc,brewka97_nonmon}
+\printbibliography
+\end{document}
