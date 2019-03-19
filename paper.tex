@@ -2,11 +2,16 @@
 \\ MCMP, LMU Munich \\ 500,000 words} \date{\today} \usepackage{setspace}
 
 \usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
 \usepackage{ptolemaicastronomy}
+\usepackage{ebproof/ebproof}
 \usepackage[backend=biber,authordate,
 ibidtracker=context,natbib,doi=false,isbn=false,url=false]{biblatex-chicago}
 
 \addbibresource{/home/gilbert/Documents/bibliography/references.bib}
+
+\newcommand{\nc}{\,\mid\!\sim\,}
 
 \begin{document}
 
@@ -100,8 +105,8 @@ assumed to be analytic, we won't drop that, either. Dropping either $b \rightarr
 f$ or $p \rightarrow \neg f$ leads to a revision satisfying postulates $K^*1 -
 K^*8$. To decide between the two options in our formalism, we need additional
 structure. There are a host of different such structures developed, prominently
-a procedure called \emph{partial meet contraction}
-\parencite[p.~80]{gaerdenfors88_knowl} and a notion called
+\emph{partial meet contraction}
+\parencite[p.~80]{gaerdenfors88_knowl} and 
 \emph{epistemic entrenchment} \parencite[p.~86]{gaerdenfors88_knowl}. Both
 are relational structures designed to prescribe a choice. Partial meet
 contraction introduces a relation on maximal subsets of $K$ which don't  
@@ -123,7 +128,6 @@ $\subseteq$-minimal sphere \emph{and} in $[p]$. Compare Figure
 
 \begin{figure}[ht]
     \centering
-    \label{fig:spheres1}
     \begin{tikzpicture}[scale=1]
         % wider layers, pointier propositions
         \tikzset{layerwidth=1,innerfactor=0,
@@ -142,8 +146,11 @@ $\subseteq$-minimal sphere \emph{and} in $[p]$. Compare Figure
         % world, spheres, and propositions
         % \filldraw circle[radius=.05];
         \node at (0,0) {$[K]$};
-
-        \spherepos[fill]{30}{2.2}{circle[radius=.1]}
+        \spherepos[fill]{30}{1}{circle[radius=.05]}
+        \spherepos[fill]{120}{1}{circle[radius=.05]}
+        \spherepos[fill]{270}{1}{circle[radius=.05]}
+        \spherepos[fill]{30}{2.2}{circle[radius=.05]}
+        \spherepos[fill]{45}{3.2}{circle[radius=.05]}
         \spherepos[fill]{22}{2.3}{node {$i$}}
         % \spherepos{-70}{1.8}{node {$S_1$}}
         \spherepos{-70}{2.8}{node{$S_1$}}
@@ -155,6 +162,8 @@ $\subseteq$-minimal sphere \emph{and} in $[p]$. Compare Figure
     \end{tikzpicture}
 
     \caption{Belief set $K$ in a system of spheres.}
+
+    \label{fig:spheres1}
 \end{figure}
 
 How does this help with choosing between dropping $b \rightarrow
@@ -163,10 +172,97 @@ f$ or $p \rightarrow \neg f$? Depending on the agent's sphere system, either $i
 either the agent finds it more plausible that penguins fly or they
 don't.\footnote{Note to self: what if $i_1 \models p \land f$ and $\i_2 \models
   p \land \neg f$, $i_1,i_2 \in K^*p$?} With the help of this additional
-structure, then, we can model the example as we please.
+structure, then, we can uniquely define a revision.
+
+Grove's sphere systems are provably `sound and complete' for revision functions
+satisfying $(K^*1)-(K^*8)$, in a sense made precise by \textcite[][p.~84-85]{gaerdenfors88_knowl}.
+
+\subsection{Non-monotonic Logic}
+
+Non-monotonic logics define an conditional or a consequence relation that does
+not satisfy monotonicity, i.e. additional evidence can demand a retraction of
+previously drawn inference. Formally, the following inference is not valid for $\nc$. 
+\begin{center}
+    \begin{prooftree}
+        \hypo{ \alpha \nc \beta } \infer1[(Mon)]{ \alpha \land \gamma \nc \beta}
+    \end{prooftree}
+\end{center}
+I focus here on a type of non-monotonic logic called
+\emph{preferential logic} developed by
+\textcite{kraus90_nonmon_reason_prefer_model_cumul_logic}. KLM discuss a host of
+conditions that the consequence relation can instead satisfy, and develop semantics for
+salient sets of these conditions. For example, they introduce a weaker notion called 
+cautious monotonicity:
+\begin{center}
+    \begin{prooftree}
+        \hypo{ \alpha \nc \beta } \hypo{\alpha \nc \gamma} \infer2[(CMon)]{
+          \alpha \land \beta \nc \gamma}
+    \end{prooftree}
+\end{center}
+Important resulting logics are \textbf{C} (for cumulativity), \textbf{P} (for preferential), and \textbf{R}
+(for rational), in increasing order of strength. 
+
+Hans Rott shows that there is a close relation between the conditions
+and the AGM postulates for revision
+\parencite[p.~118,137]{rott01_chang_choic_infer}. Via the Gärdenfors-Makinson
+identity, we can interdefine the two theoretical approaches:
+\[ \beta \in K^*\alpha \text{ iff } \alpha \nc \beta \] for sentences
+$\alpha,\beta \in \mathcal{L}$ and belief set $K$. Whether a sentence $\beta$
+is included in the revision of $K$ by a sentence $\alpha$ can be seen as
+validating a non-monotonic inference from $\alpha$ to $\beta$.
+
+To spell this out a bit more, let's have a intuitive, brief look at a
+(non-rigorous, simplified, finite)
+version of the semantics for system \textbf{R} that \textcite{lehmann1992does}
+define. A ranked model assigns each world $w \in W$ a rank $rk: W \rightarrow \mathbb{N}$
+such that a relation $\prec$ on $W$ can be defined for all $w_1,w_2 \in W$:
+\[
+ w_1 \prec w_2 :\iff rk(w_1) < rk(w_2).
+\]
+
+Such a model validates a non-monotonic conditional $\alpha \Rightarrow \beta$ if
+and only if the $\prec$-minimal $\alpha$-worlds are also $\beta$-worlds (compare
+Figure \ref{fig:rank1} and \textcite[][p.~748]{ortner11_mechan_induc}).
+
+\begin{figure}[ht]
+    \centering
+\begin{tikzpicture}
+% \draw[help lines, thick] (0,0) grid (4,4);
+\begin{scope}
+\clip(0,0)rectangle(2,2);
+\draw[fill,lightgray] (1.,3.5) circle [x radius=0.75, y radius=2.25];
+\end{scope}\draw[rounded corners] (0, 0.1) rectangle (3, 1);
+\draw[rounded corners] (0, 1.1) rectangle (3, 2);
+\draw[rounded corners] (0, 2.1) rectangle (3, 3);
+
+\draw[fill] (0.5,0.55) circle (0.05);
+\draw[fill] (1.5,0.55) circle (0.05);
+\draw[fill] (2.5,0.55) circle (0.05);
+\draw[fill] (1,1.55) circle (0.05);
+% \draw[fill] (2,1.55) circle (0.05);
+\draw[fill] (0.5,2.55) circle (0.05);
+\draw[fill] (1.5,2.55) circle (0.05);
+% \draw[fill] (2.5,2.55) circle (0.05);
+
+\draw (0.25,3.5) arc[start angle=180,end angle=360, x radius=0.75, y radius=2.25] node[left] {$\alpha$};
+
+\end{tikzpicture}
+\caption{A ranked model. The $\prec$-minimal worlds satisfying $\alpha$ are shaded.}
+\label{fig:rank1}
+\end{figure}
+
+Now the similarity to the sphere system described in the preceding section is
+not just superficial; we can in fact transform the ranked model into a sphere
+system by setting $[K]$ to the $\prec$-minimal worlds, $S_1$ to the union of
+$[K]$ and the $\prec$-minimal worlds of $W \ [K]$ and so forth. The semantics of
+revision by $p$ are then very similar to validating a non-monotonic conditional
+$\alpha \rightarrow \beta$. Note that we get this very neat correspondence of
+the semantics not in all cases. In particular, the Grove sphere system requires
+$(K^*1)-(K^*8)$, and ranked models are adequate for the strong logic \textbf{R}.
+
+\subsection{Rational Choice}
 
 
-\subsection{Non-monotonic Logic: Preferential Semantics}
 \section{Erik Olsson's Critique}
 \section{Discussion and Conclusion}
 \nocite{rott01_chang_choic_infer,olsson03_belief_revis_ration_choic_unity_reason,gaerdenfors88_knowl,gaerdenfors94_nonmon_infer_based_expec,alchourron85_logic_theor_chang,makinson91_relat,sen93_inter_consis_choic,kraus90_nonmon_reason_prefer_model_cumul_logic,hansson17_logic_belief_revis,
