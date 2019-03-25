@@ -1,5 +1,5 @@
 \documentclass{article} \usepackage[utf8]{inputenc} \title{} \author{Conrad Friedrich
-\\ MCMP, LMU Munich \\ 500,000 words} \date{\today} \usepackage{setspace}
+\\ MCMP, LMU Munich \\ 2918 words} \date{\today} \usepackage{setspace}
 
 \usepackage{amsmath}
 \usepackage{amssymb}
@@ -18,48 +18,37 @@ ibidtracker=context,natbib,doi=false,isbn=false,url=false]{biblatex-chicago}
 
 \maketitle
 \section{Introduction}
-This paper discusses Hans Rott' claim that principles of reasoning and belief are subsumed under and derivable from what may be called principles of practical reason and, in addition, Erik Olsson's reply.
-I argue that Olsson's criticism is in part successful, but Sven Ove Hansson makes an even stronger point.
+This paper discusses Hans Rott' claim that principles of reasoning and belief are subsumed under and derivable from what may be called principles of practical reason.
+I argue that Erik Olsson's criticism is in part successful, but Sven Ove Hansson makes an even stronger point.
 To this end, I first reconstruct a fragment of Rott's unifying framework and explain the logical and epistemological systems involved.
-Then I look in detail at Olsson's philosophical response.
-I conclude with a critical discussion.
+Then I look in detail at Olsson's philosophical response, critically discussing it. 
 
-The first part of this paper focusses on select elements of the formal systems Hans Rott is unifying.
-I describe aspects belief revision theory, a study of rational changes of belief, thus a theory situated between formal epistemology and symbolic artificial intelligence.
-Next, I give an exposition of a certain type non-monotonic logic, a type of logic that allows for defeasible inferences, i.e. inferences which might be invalidated by further information.
-I then present results already preceding Rott's work, in which both systems just mentioned are shown to behave very similarly.
-Next, I give a brief description of the theory of rational choice via choice functions, and finally describe how Rott shows both belief revision and non-monotonic logic to be derivable as choice functions.
+The first part of this paper focuses on select elements of the formal systems Hans Rott is unifying.
+I describe aspects of belief revision theory, a study of rational change of belief, situated between formal epistemology and symbolic artificial intelligence.
+Next, I give an exposition of a certain type of non-monotonic logic. These logics allow for defeasible inferences, i.e. inferences which might be invalidated by further information.
+Next, I give a brief description of the theory of rational choice via choice functions, and finally describe how Rott intends both belief revision and non-monotonic logic to be derived from choice functions.
 
-The second part of this paper accepts the formal systems as given and evaluates Rott's philosophical claim regarding the unity of practical and theoretical reason. To this end, I look at Erik Olsson's criticism and discuss his arguments in turn. I argue that Hansson's brief critique points to a deeper problem than Olsson addresses, though.
+The second part of this paper accepts the formal systems as given and evaluates Rott's philosophical claim regarding the unity of practical and theoretical reason.
+To this end, I have a look at Erik Olsson's criticism and discuss his arguments.
+I argue that Hansson's brief criticism points to an even deeper problem.
 
 \section{Belief Revision, Non-monotonic Logic, and Rational Choice}
 
+Throughout, we assume a standard propositional language \(\mathcal{L}\) closed under the boolean operations \(\land, \lor, \neg, \rightarrow\) and including $\top,\bot$.
+
 \subsection{Belief Revision}
-Belief revision if the form of the most prominent AGM
-\parencite{alchourron85_logic_theor_chang} defines criteria for a rational agent
-on how to update her beliefs when learning evidence. Crucially, this evidence
-might be conflicting with what the agent already beliefs. For example, you are
-about to pay your bill at a restaurant and, to your great surprise, there is no
-money in your wallet \parencite[p.~48]{gaerdenfors88_knowl}.
+Belief revision of the form of the most prominent AGM \parencite{alchourron85_logic_theor_chang} defines criteria for how a rational agent updates her beliefs when she learns new evidence.
+Crucially, this evidence might be conflicting with what the agent already believes.
+For example, you are about to pay your bill at a restaurant and, to your great surprise, there is no money in your wallet \parencite[p.~48]{gaerdenfors88_knowl}.
 
-In this framework, the agent's epistemic state is modeled by a set of sentences
-from a standard propositional language \(\mathcal{L}\) closed under the boolean
-operations \(\land, \lor, \neg, \rightarrow\). A consistent set closed under a
-classical consequence relation \(\vdash\) is called \emph{belief set}. The three
-key operations on a belief set are expansion, contraction and revision, each
-with a single sentence. This sentence represents external input, e.g. the
-content of a testimony of a trusted interlocutor. Expansion is only employed in
-case the added belief is consistent with the belief set, such that it is a
-special case of revision. Contraction and revision are interdefinable via two
-postulates called Levi identity and Harper identity, defining contraction in
-terms of revision and \emph{vice versa}, respectively.
+In this framework, the agent's epistemic state is modeled by a set of sentences of $\mathcal{L}$. A consistent such set closed under a classical consequence relation \(\vdash\) is called \emph{belief set}.
+The three key operations on a belief set are expansion, contraction, and revision, each by a single sentence.
+This sentence represents external input, e.g. the content of a testimony of a trusted interlocutor.
+Expansion is only employed in case the added belief is consistent with the belief set, such that it is a special case of revision.
+Contraction and revision are interdefinable via two postulates called Levi identity and Harper identity, defining contraction in terms of revision and \emph{vice versa}. 
 
-Let us look then at the revision function from a sentence \(\alpha\) and a
-belief set \(K\), denoted \(K^*\alpha\). What constitutes a rational revision?
-Following Quine`s `maxim of minimum mutilation'
-\parencite[p.~72]{rott01_chang_choic_infer}, the central postulates for belief
-revision aim at conserving as much as possible from \(K\) in the new set
-\(K^*\alpha\) while incorporating the new evidence \(\alpha\).
+Let us look then at the revision function of a sentence \(\alpha\) and a belief set \(K\), denoted \(K^*\alpha\). What constitutes a rational revision?
+Following Quine`s `maxim of minimum mutilation' \parencite[p.~72]{rott01_chang_choic_infer}, the central postulates for belief revision aim at conserving as much as possible from \(K\) in the new set \(K^*\alpha\) while incorporating the new evidence \(\alpha\).
 \textcite{gaerdenfors88_knowl} describes six basic (minimal, elementary)
 postulates, and two additional ones. In the interest of brevity, I will skip
 listing them and refer to the numerous publications on these principles, e.g.
@@ -70,53 +59,32 @@ states the success of a revision operation:
     \label{eq:k2}
     \tag{$K^*2$} \alpha \in K^*\alpha
 \]
-This is supposed to prescribe that a rational revision operator always includes
-the new belief in the belief set after updating. In General, the postulates are
-designed to be intuitive and confirm to common sense (Cite). Importantly, the
-postulates constrain the set of rational revision functions by way of logical
-(set-theoretical) considerations, but do not necessarily determine a revision
-uniquely \parencite[p.~53]{gaerdenfors88_knowl}.
+This is supposed to prescribe that a rational revision operator always includes the new belief in the belief set after updating.
+In general, the postulates are designed to be intuitive and confirm to common sense.
+Importantly, the postulates constrain the set of rational revision functions by way of logical (set-theoretical) considerations, but do not necessarily determine a revision uniquely \parencite[p.~53]{gaerdenfors88_knowl}.
 
-To see this, let's consider an example. Suppose you believe that penguins are
-birds, that birds fly, but penguins don't. We might represent the belief set as
-\(K = Cn(\{ p \rightarrow b, b \rightarrow f, p \rightarrow \neg
-f\})\),\footnote{Glancing over the fact that the beliefs are quantificational in
-  nature. For the present purposes, the beliefs may be assumed to be about
-  individuals, and that we have many such beliefs.} where \(Cn\) denotes a
-classical consequence closure operator. We now learn that \(p\), i.e. that
-Tweety is in fact a penguin. It is clear that when Tweety is a penguin, it can't
-fly, even though it's a bird. The result of adding \(p\) to \(K\) is
-inconsistent, so \(K\) has to be revised. How does the revised belief set
-\(K^*p\) look like?
+To see this, let's consider an example.
+Suppose you believe that penguins are birds, that birds fly, but penguins don't.
+We might represent the belief set as \(K = Cn(\{ p \rightarrow b, b \rightarrow f, p \rightarrow \neg f\})\),\footnote{Glancing over the fact that the beliefs are quantificational in nature. For the present purposes, the beliefs may be assumed to be about individuals, and that we have many such beliefs.} where \(Cn\) denotes a classical consequence closure operator and the elements of $K$ are something like expectations (cf. \cite{gaerdenfors94_nonmon_infer_based_expec}).
+We now learn that \(p\), i.e. that Tweety is in fact a penguin.
+Intuitively, it is clear that when Tweety is a penguin, it can't fly, even though it's a bird.
+The result of adding \(p\) to \(K\) is inconsistent, so \(K\) has to be revised.
+How does the revised belief set \(K^*p\) look like?
 
-By the success postulate, we cannot drop \(p\). Since \(b \rightarrow f\) can be
-assumed to be analytic, we won't drop that, either. Dropping either $b
-\rightarrow f$ or $p \rightarrow \neg f$ leads to a revision satisfying
-postulates $K^*1 - K^*8$. To decide between the two options in our formalism, we
-need additional structure. There are a host of different such structures
-developed, prominently \emph{partial meet contraction}
-\parencite[p.~80]{gaerdenfors88_knowl} and \emph{epistemic entrenchment}
-\parencite[p.~86]{gaerdenfors88_knowl}. Both are relational structures designed
-to prescribe a choice. Partial meet contraction introduces a relation on maximal
-subsets of $K$ which don't imply $p$, while epistemic entrenchment orders
-sentences in $K$. To facilitate an intuitive notion, I present a third `semantics'
-based on a sphere system by \textcite{grove88_two_model_theor_chang} (also cf.
-\textcite[p.~83]{gaerdenfors88_knowl}).
+By the success postulate, we cannot drop \(p\). Since \(b \rightarrow f\) can be assumed to be analytic, we won't drop that, either.
+Dropping either $b \rightarrow f$ or $p \rightarrow \neg f$ leads to a revision satisfying postulates $K^*1 - K^*8$.
+To decide between the two options in our formalism, we need additional structure.
+There have been a host of different such types of structures developed, prominently \emph{partial meet contraction} \parencite[p.~80]{gaerdenfors88_knowl} and \emph{epistemic entrenchment} \parencite[p.~86]{gaerdenfors88_knowl}.
+Both are relational structures designed to prescribe a choice.
+Partial meet contraction introduces a relation on maximal subsets of $K$ which don't imply $p$, while epistemic entrenchment orders sentences in $K$.
+To facilitate an intuitive notion, I present a third `semantics' based on a sphere system by \textcite{grove88_two_model_theor_chang} (also cf. \cite[p.~83]{gaerdenfors88_knowl}).
  
-We define a set $W$ of possible worlds (which can be seen as maximal consistent
-subsets of $\mathcal{L}$) organized into a set of concentric spheres
-$\mathcal{S}$ totally ordered by $\subseteq$, such that $\llbracket K\rrbracket := \{w \in W: w
-\models \alpha \text{ for all } \alpha \in K\}$ is the minimal and $W$ the
-maximal element of $\mathcal{S}$.
+We define a set $W$ of possible worlds (which can be seen as maximal consistent subsets of $\mathcal{L}$) organized into a set of concentric spheres $\mathcal{S}$ totally ordered by $\subseteq$, such that $\llbracket K\rrbracket := \{w \in W: w \models \alpha \text{ for all } \alpha \in K\}$ is the minimal and $W$ the maximal element of $\mathcal{S}$.
 
-Intuitively, the spheres rank possible worlds by plausibility or normality,
-with $K$, the belief set, ranked most plausible. If $\alpha$ is incompatible with
-$K$, we have $\llbracket\alpha\rrbracket \cap \llbracket K\rrbracket =
-\emptyset$, where $\llbracket \alpha \rrbracket := \{w \in W : w \models \alpha\}$. The idea is to revise $\llbracket K\rrbracket$ such that
-it only contains the most normal worlds satisfying $\alpha$, i.e. worlds in the
-$\subseteq$-minimal sphere \emph{and} in $\llbracket\alpha\rrbracket$. Compare Figure
-\ref{fig:spheres1}, where $\llbracket K^*\alpha\rrbracket = S_1 \cap
-\llbracket\alpha\rrbracket$, such that $i \in \llbracket K^*\alpha\rrbracket$.
+Intuitively, the spheres rank possible worlds by plausibility or normality, with the belief set $K$ ranked most plausible.
+If $\alpha$ is incompatible with $K$, we have $\llbracket\alpha\rrbracket \cap \llbracket K\rrbracket = \emptyset$, where $\llbracket \alpha \rrbracket := \{w \in W : w \models \alpha\}$.
+The idea is to revise $\llbracket K\rrbracket$ such that it only contains the most normal worlds satisfying $\alpha$, i.e. worlds in the $\subseteq$-minimal sphere \emph{and} in $\llbracket\alpha\rrbracket$.
+Compare Figure \ref{fig:spheres1}, where $\llbracket K^*\alpha\rrbracket = S_1 \cap \llbracket\alpha\rrbracket$, such that $i \in \llbracket K^*\alpha\rrbracket$.
 
 \begin{figure}[ht]
     \centering
@@ -157,7 +125,7 @@ $\subseteq$-minimal sphere \emph{and} in $\llbracket\alpha\rrbracket$. Compare F
 \end{figure}
 
 How does this help with our example, i.e. choosing between dropping $b \rightarrow f$ or $p
-\rightarrow \neg f$? Depending on the agent's sphere system, either $i \models p
+\rightarrow \neg f$? Interpret $\alpha$ as $p$. Depending on the agent's sphere system, either $i \models p
 \land b \land f$ or $i \models p \land b \land \neg f$. Intuitively, either the
 agent finds it more plausible that penguins fly or they
 don't.\footnote{Something I am not quite sure about: what if $i_1 \models p \land f$ and $i_2 \models p \land \neg f$,
@@ -194,7 +162,7 @@ introduce a weaker notion called cautious monotonicity:
 Important resulting logics are \textbf{C} (for cumulativity), \textbf{P} (for
 preferential), and \textbf{R} (for rational), in increasing order of strength.
 
-Hans Rott shows that there is a close relation between the conditions and the
+Hans Rott shows that there is a close relation between these conditions and the
 AGM postulates for revision \parencite[pp.~118,~137]{rott01_chang_choic_infer}.
 Via the Gärdenfors-Makinson identity, we can interdefine the two theoretical
 approaches:
@@ -202,24 +170,18 @@ approaches:
     \tag{GMI}
     \beta \in K^*\alpha \text{ iff } \alpha \nc \beta
 \]
-for sentences
-$\alpha,\beta \in \mathcal{L}$ and belief set $K$. Whether a sentence $\beta$ is
-included in the revision of $K$ by a sentence $\alpha$ can be seen as validating
-a non-monotonic inference from $\alpha$ to $\beta$.
+for sentences $\alpha,\beta \in \mathcal{L}$ and belief set $K$.
+Whether a sentence $\beta$ is included in the revision of $K$ by a sentence $\alpha$ can be seen as validating a non-monotonic inference from $\alpha$ to $\beta$.
 
-To spell this out a bit more, let's have a intuitive, brief look at a
-(non-rigorous, simplified, finite) version of the semantics for system
-\textbf{R} that \textcite{lehmann92_what_does_condit_knowl_base_entail} define.
-A ranked model assigns each world $w \in W$ a rank $rk: W \rightarrow
-\mathbb{N}$ such that a relation $\prec$ on $W$ can be defined for all $w_1,w_2
+To spell this out a bit more, let's have a brief look at a (non-rigorous, simplified, finite) version of the semantics for system \textbf{R} that \textcite{lehmann92_what_does_condit_knowl_base_entail} define.
+A ranked model assigns each world $w \in W$ a rank $rk: W \rightarrow \mathbb{N}$ such that a relation $\prec$ on $W$ can be defined for all $w_1,w_2
 \in W$:
 \[
-    w_1 \prec w_2 :\iff rk(w_1) < rk(w_2).
+    w_1 \prec w_2 \text{ iff } rk(w_1) < rk(w_2).
 \]
-
-Such a model validates a non-monotonic conditional $\alpha \Rightarrow \beta$ if
-and only if the $\prec$-minimal $\alpha$-worlds are also $\beta$-worlds (compare
-Figure \ref{fig:rank1} and \textcite[][p.~748]{ortner11_mechan_induc}).
+Such a model validates a non-monotonic inference $\alpha \nc \beta$ if
+and only if the $\prec$-minimal $\alpha$-worlds are also $\beta$-worlds (cf.
+Figure \ref{fig:rank1} and \cite[][p.~748]{ortner11_mechan_induc}).
 
 \begin{figure}[ht]
     \centering
@@ -250,36 +212,36 @@ Figure \ref{fig:rank1} and \textcite[][p.~748]{ortner11_mechan_induc}).
     \label{fig:rank1}
 \end{figure}
 
-Now the similarity to the sphere system described in the preceding section is
-not just superficial; we can in fact transform the ranked model into a sphere
-system by setting $[K]$ to the $\prec$-minimal worlds, $S_1$ to the union of
-$[K]$ and the $\prec$-minimal worlds of $W \ [K]$ and so forth. The semantics of
-revision by $p$ are then very similar to validating a non-monotonic conditional
-$\alpha \rightarrow \beta$. Note that we get this very neat correspondence of
-the semantics not in all cases. In particular, the Grove sphere system requires
-$(K^*1)-(K^*8)$, and ranked models are adequate for the strong logic \textbf{R}.
-The analogies between the semantics of different systems are a bit more subtle and
-out of the scope of this short paper.
+The similarity to the sphere system described in the preceding section is not just superficial; we can in fact transform the ranked model into a sphere system by setting $\llbracket K \rrbracket$ to the $\prec$-minimal worlds, $S_1$ to the union of $\llbracket K \llbracket$ and the $\prec$-minimal worlds of $W \setminus \llbracket K \rrbracket$ and so forth.
+The semantics of revision by $p$ are then very similar to validating a non-monotonic inference $\alpha \nc \beta$.
+Note that we get this very neat correspondence of the semantics not in all cases.
+In particular, the Grove sphere system requires $(K^*1)-(K^*8)$, and ranked models are adequate for the strong logic \textbf{R}.
+The analogies between the semantics of different systems are a bit more subtle and out of the scope of this short paper.
+
 
 \subsection{Rational Choice}
 
-The central concept in rational choice is a choice function: Let $X$ be a set (of conceivable states) and $\mathcal{X}$ be a set of non-empty subsets of $X$ (a set of sets of available states). A choice function $\sigma: \mathcal{X} \rightarrow \mathcal{P}(X)$ maps a menu $S \in \mathcal{X}$ to $\sigma(S) \subseteq S$ called a choice sets, Commonly, $\sigma$ is constrained with some conditions like Sen's $\alpha,\beta$ and $\gamma$.
+The central concept in rational choice is a that of a choice function: let $X$ be a set (of conceivable states) and $\mathcal{X}$ be a set of non-empty subsets of $X$ (a set of sets of available states).
+A choice function $\sigma: \mathcal{X} \rightarrow \mathcal{P}(X)$ maps a menu $S \in \mathcal{X}$ to $\sigma(S) \subseteq S$ called a choice set.
+Commonly, $\sigma$ is constrained with some conditions like Sen's $\alpha,\beta$ and $\gamma$.
 
-Rott offers multiple accounts on how choice functions can be employed to model changes in belief, and shows that, again, the conditions display a `1-1 correspondence' \parencite[][p.~225]{olsson03_belief_revis_ration_choic_unity_reason} with conditions used in belief revision \emph{and} non-monotonic logic \parencite[][pp.~118,~206]{rott01_chang_choic_infer}. One such account describes a \emph{semantic choice function}. We call a choice function semantic just in case $\mathcal{X} = W$, i.e. the available states are just the set of possible worlds\footnote{Rott makes a finer distinction between worlds and models \parencite[][p.~172]{rott01_chang_choic_infer} which needn't concern us here.} and $\mathcal{X} = \{\llbracket \alpha \rrbracket : \alpha \in \mathcal{L}\}$. What, then, are we choosing with out choice function? Recall the previous semantics. In both cases, the model `chooses' the most normal or best world of $\llbracket \alpha\rrbracket$. Are those worlds also $\beta$-worlds? Yes, if all of them are in $\llbracket \beta \rrbracket$. This leads to the following natural formulation:
+Rott offers multiple accounts on how choice functions can be employed to model changes in belief, and shows that the conditions display a `1-1 correspondence' \parencite[][p.~225]{olsson03_belief_revis_ration_choic_unity_reason} with conditions used in belief revision \emph{and} non-monotonic logic \parencite[][pp.~118,~206]{rott01_chang_choic_infer}. One such account describes a \emph{semantic choice function}. We call a choice function semantic just in case $\mathcal{X} = W$, i.e. the available states are just the set of possible worlds\footnote{Rott makes a finer distinction between worlds and models \parencite[][p.~172]{rott01_chang_choic_infer} which needn't concern us here.} and $\mathcal{X} = \{\llbracket \alpha \rrbracket : \alpha \in \mathcal{L}\}$. What, then, are we choosing with out choice function? Recall the previous semantics. In both cases, the model `chooses' the most normal or best world of $\llbracket \alpha\rrbracket$. Are those worlds also $\beta$-worlds? Yes, if all of them are in $\llbracket \beta \rrbracket$. This leads to the following natural formulation:
 \[
     \tag{RI}
 \alpha \in K^*\beta \text{ iff } \alpha \nc \beta \text{ iff } \sigma(\llbracket
 \alpha \rrbracket) \subseteq \llbracket \beta \rrbracket.
 \]
-Which provides simplified, but in my opinion very intuitive access to the in part quite detailed and complicated results of Rott's. With the help of (RI), we can transform a given belief revision operator into a theory of non-monotonic logic and a selection function, and vice versa. If the belief revision operator satisfies some AGM postulates, we can find counterparts in non-monotonic logic and the theory rational choice.
+Which provides simplified, but in my opinion very intuitive access to the in part quite detailed results of Rott's.
+With the help of (RI), we can transform a given belief revision operator into a theory of non-monotonic logic and a selection function, and vice versa.
+If the belief revision operator satisfies some AGM postulates, we can find counterparts in non-monotonic logic and the theory of rational choice.
 
-Rott takes this intertranslatability to be support his thesis for the unity of theoretical and practical reason \parencite[][p.~141]{rott01_chang_choic_infer}, which I will discuss in the next section.
+Rott takes this intertranslatability to support his thesis of the unity of theoretical and practical reason \parencite[][p.~141]{rott01_chang_choic_infer}, which I will discuss in the next section.
 
 \section{The Unity of Theoretical and Practical Reason}
 
 In this section, I discuss Olsson's and Hansson's evaluation of Rott's extended argument for the unity of theoretical and practical reason.
 
-Olsson summarizes Rott's claim thusly: ``Because theoretical reason has supposedly been shown to be a mere special case of practical principles of choice, the equivalence also supports, Rott thinks, the primacy of practical reason''\parencite[][p.~221]{olsson03_belief_revis_ration_choic_unity_reason}. We have two claims: Theoretical reason and practical reason are just two aspects of a single entity, and further that practical reason is primary or fundamental in an interesting sense. Olsson does not agree. He provides three central objections, which I discuss in turn.
+Olsson summarizes Rott's claim: ``Because theoretical reason has supposedly been shown to be a mere special case of practical principles of choice, the equivalence also supports, Rott thinks, the primacy of practical reason''\parencite[][p.~221]{olsson03_belief_revis_ration_choic_unity_reason}. We have two claims: Theoretical reason and practical reason are just two aspects of a single entity, and further that practical reason is primary or fundamental in an interesting sense. Olsson does not agree. He provides three central objections, which I discuss in turn.
 
 As a remark, neither Olsson nor Rott really define what they mean by theoretical and practical reason, leaving much wiggle-room for philosopical quibble over words. We are presumably talking about a philosophically established distinction. Theoretical reason then is the faculty of reasoning about explanation, prediction, and other truth-directed attitudes, while practical reason is the faculty of reasoning about actions \parencite{wallace18_pract_reason}. Without further clarification, though, this is only a very rough and somewhat unsatisfactory distinction.
 
@@ -289,13 +251,14 @@ The philosophical import of the challenge is this. Granted, the formal systems o
 
 Attempts to address these shortcomings tend to restrict the scope in which to apply the formal system. For example: only apply AGM belief revision if the trustworthiness of the new information is established beyond doubt. Olsson argues that this strategy leads into a dilemma: Either we apply the systems unrestrictedly, in which case they do not represent theoretical and practical reason, or we restrict to fit the counterexamples, in which case they are rendered insignificant.
 
-In my view, the challenge is construed somewhat too narrow. There might be ways to amend, say, AGM belief revision without narrowing its scope. For example, one hallmark of the belief set is that it contains only sentences in object language (Citation?). If we allow for more complexity here, however, the belief to revise could include the fact that it has been doctor A's opinion, thus allowing two contradictory testimonies in the belief set. Of course, allowing for more structure in the object language is not unproblematic \parencite[][p.~18]{koons17_defeas_reason}, but I do not see a principled reason for its impossibility.
+In my view, the challenge is construed somewhat too narrow. There might be ways to amend, say, AGM belief revision without narrowing its scope. For example, one hallmark of the belief set is that it contains only sentences in object language. If we allow for more complexity here, however, the belief to revise could include the fact that it has been doctor A's opinion, thus allowing two contradictory testimonies in the belief set. Of course, allowing for more structure in the object language is not unproblematic \parencite[][p.~18]{koons17_defeas_reason}, but principled reasons for its impossibility are not apparent.
 
-I agree with Olsson that in so far as counterexamples to the intuitive appeal to the applicability of the formal systems are successful, Rott's argument is weakened. I do not agree with the seeming inescapability of the dilemma.
+I agree with Olsson that in so far as counterexamples to the intuitive appeal to the applicability of the formal systems are successful, Rott's argument is weakened. I do not agree with the inescapability of the dilemma.
 
-Olsson's second challenge casts doubt on the success of the formal unification: In so far as rational choice theory is about practical reason, its domain are choices of actions and their consequences. Choices are intentional. Considerations of doxastic voluntarism aside, the abstract choice theory that serves as a basis to derive postulates for theoretical reason is bereft of its practical application. The very thing that makes it practical - the domain - is removed in order to arrive at theoretical reason. Both faculties might be shown to share some formal structure in the systems we use to describe parts of it. But by transferring from one domain to the other, only the structure is transferred, not the substance. 
+Olsson's second challenge casts doubt on the success of the formal unification: In so far as rational choice theory is about practical reason, its domain are choices of actions and their consequences. Choices are intentional. Considerations of doxastic voluntarism aside, the abstract choice theory that serves as a basis to derive postulates for theoretical reason is bereft of its practical application. The very thing that makes it practical--the domain and the goal--is removed in order to arrive at theoretical reason. Both faculties might be shown to share some formal structure in the systems we use to describe parts of it. But by transferring from one domain to the other, only the structure is transferred, not the substance. 
 
-While I think this talk of structure and substance is way less precise than I'd like, I have to agree with Olsson here: Without clearly stating what is meant with the unity of theoretical and practical reason, Rott is completely open to this objection.
+While I think this talk of structure and substance is way less precise than I'd like, I have to agree with Olsson's objection.
+Without clearly stating what is meant with the unity of theoretical and practical reason, Rott is completely open to this challenge.
 
 Olsson's third challenge concerns Rott's reliance on the amount of surprise the formal results generate. Since the correspondences are surprisingly exact between the many postulates, this is taken as a strong indication for some underlying unity. Olsson counters this line of reasoning by taking a closer look at the origins of the formal systems, discovering that Gärdenfors was indeed motivated by considerations of rational choice when developing early sketches of belief revision. I did not find the reliance on surprise to be a crucial element of Rott's argument, so I will not pursue this point further (cf \textcite[][pp.~231-235]{olsson03_belief_revis_ration_choic_unity_reason} if you're interested).
 
